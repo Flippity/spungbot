@@ -20,7 +20,7 @@ var dispatcher = null;
 var userinserver = null;
 
 var servers = {};
-var playinglist = ["in Auschwitz", "on the eastern front", "with jewish kids"];
+var playinglist = ["with bubbles", "with Patrick", "the song - Where's Gary?"];
 
 const connection = require('mysql').createConnection({
     host: 'remotemysql.com',
@@ -37,9 +37,9 @@ client.on("ready", () => {
 	
 	setInterval(() => {
 		if(playinglist[0] == null){
-			playinglist.unshift("in Auschwitz");
-			playinglist.unshift("on the eastern front");
-			playinglist.unshift("with jewish kids");
+			playinglist.unshift("with bubbles");
+			playinglist.unshift("with Patrick");
+			playinglist.unshift("the song - Where's Gary?");
 		}else{
 			client.user.setActivity(playinglist.shift());
 		}
@@ -82,7 +82,6 @@ client.on("message", async message => {
 				
 				
 				//commands that everyone can use
-				siegheil(message, enable);
 				displayServerLevel(message, result[0].serverrank);
 				displayServerXP(message, result[0].xp);
 				rank(message);
@@ -620,24 +619,6 @@ function displaycmds(message){
 		  }
 		});
 			
-	}
-}
-
-//checks for an s, and says 'sieg heil'
-function siegheil(message, enabled){
-	if(enabled == 1){
-		if (message.content.startsWith("s") && message.author.username != "FuhrerBot" || message.content.startsWith("S") && message.author.username != "FuhrerBot") {
-			if (talkedRecently.has(message.author.id)) {
-					
-			} else {
-				message.channel.send("Sieg Heil!");
-				talkedRecently.add(message.author.id);
-				setTimeout(() => {
-					// Removes the user from the set after a minute
-					talkedRecently.delete(message.author.id);
-				}, 6000);
-			}
-		}
 	}
 }
 
