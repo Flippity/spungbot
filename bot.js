@@ -84,18 +84,18 @@ client.on("message", async message => {
 				//commands that everyone can use
 				displayServerLevel(message, result[0].serverrank);
 				displayServerXP(message, result[0].xp);
-				rank(message);
-				cat(message);
-				pizzatime(message);
-				dankmeme(message);
-				PlayCommand(message, server);
-				PlayQueueCommand(message, server);
+				rank(message, enabled);
+				cat(message, enabled);
+				pizzatime(message, enabled);
+				dankmeme(message, enabled);
+				PlayCommand(message, server, enabled);
+				PlayQueueCommand(message, server, enabled);
 				SkipSong(message, server);
-				f(message);
+				f(message, enabled);
 				LeaveChat(message, server);
 				getChannelFromUser(message);
-				nsfw(message);
-				hentai(message);
+				nsfw(message, enabled);
+				hentai(message, enabled);
 			}else{
 				checkServerTable(message);
 			}
@@ -114,7 +114,7 @@ function getChannelFromUser(message){
 }
 
 //plays audio based on results from youtube search
-function PlayCommand(message, server) {
+function PlayCommand(message, server, enabled) {
 	if(message.isMentioned(client.user) && message.content.includes(" play") && message.author != "FuhrerBot" && enabled == 1){
 		var x = message.content.lastIndexOf(' play ');
 		var result = message.content.substring(x + 6);
@@ -131,8 +131,8 @@ function PlayCommand(message, server) {
 }
 
 //lists out all music queued to play
-function PlayQueueCommand(message, server) {
-	if(message.isMentioned(client.user) && message.content.includes(" queue") && message.author != "FuhrerBot"){
+function PlayQueueCommand(message, server, enabled) {
+	if(message.isMentioned(client.user) && message.content.includes(" queue") && message.author != "FuhrerBot" && enabled == 1){
 		var queueString = "";
 
 		for(var x = 0; x < server.queue.length; x++) {
@@ -252,7 +252,7 @@ function PlayStream(streamUrl, server, connection, message) {
 }
 
 //this gets a cat from amazon's cat api and sends it to the channel
-async function cat(message){
+async function cat(message, enabled){
 	try{
 		if(message.isMentioned(client.user) && message.content.includes(" cat") && message.author != "FuhrerBot" && enabled == 1){
 			const body = await fetch('https://www.reddit.com/r/catpictures.json?sort=top&t=week').then(response => response.json());
@@ -275,7 +275,7 @@ async function cat(message){
 }
 
 //prints a meme from the /r/dankmeme subreddit
-async function dankmeme(message){
+async function dankmeme(message, enabled){
 	try{
 		if(message.isMentioned(client.user) && message.content.includes(" meme") && message.author != "FuhrerBot" && enabled == 1){
 			const body = await fetch('https://www.reddit.com/r/DankMemes.json?sort=top&t=week').then(response => response.json());
@@ -298,7 +298,7 @@ async function dankmeme(message){
 }
 
 //prints some nsfw stuff
-async function nsfw(message){
+async function nsfw(message, enabled){
 	try{
 		if(message.isMentioned(client.user) && message.content.includes(" nsfw") && message.author != "FuhrerBot" && enabled == 1){
 			const body = await fetch('https://www.reddit.com/r/nsfw.json?sort=top&t=week').then(response => response.json());
@@ -321,7 +321,7 @@ async function nsfw(message){
 }
 
 //prints out hentai
-async function hentai(message){
+async function hentai(message, enabled){
 	try{
 		if(message.isMentioned(client.user) && message.content.includes(" hentai") && message.author != "FuhrerBot" && enabled == 1){
 			const body = await fetch('https://www.reddit.com/r/hentai.json?sort=top&t=week').then(response => response.json());
@@ -344,7 +344,7 @@ async function hentai(message){
 }
 
 //prints pizza time
-async function pizzatime(message){
+async function pizzatime(message, enabled){
 	try{
 		if(message.isMentioned(client.user) && message.content.includes(" pizzatime") && message.author != "FuhrerBot" && enabled == 1){
 			const body = await fetch('https://www.reddit.com/r/PizzaTime.json?sort=top&t=week').then(response => response.json());
@@ -418,14 +418,14 @@ function handleAuthorLevels(message){
 }
 
 //bot says "f" 
-function f(message){
+function f(message, enabled){
 	if(message.isMentioned(client.user) && message.content.includes(" can we get an f") && message.author != "FuhrerBot" && enabled == 1){
 		message.reply("f");
 	}
 }
 
 //displays user rank
-function rank(message){
+function rank(message, enabled){
 	if(message.isMentioned(client.user) && message.content.includes(" rank") && message.author != "FuhrerBot" && enabled == 1){
 		var userid = message.author.id;
 		var serverid = message.guild.id;
@@ -676,7 +676,7 @@ function updateServerTable(message, xp){
 }
 
 //displays server level
-function displayServerLevel(message, level){
+function displayServerLevel(message, level, enabled){
 	if(message.author.username != "FuhrerBot" && enabled == 1){
 		if (message.content.includes("serverlevel") && message.isMentioned(client.user)) {
 			message.channel.send("The server's level is " + level);
