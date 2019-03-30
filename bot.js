@@ -130,6 +130,11 @@ function PlayCommand(message, server, enabled) {
 	}
 }
 
+//will autorole when members join
+function autorole(message){
+
+}
+
 //lists out all music queued to play
 function PlayQueueCommand(message, server, enabled) {
 	if(message.isMentioned(client.user) && message.content.includes(" queue") && message.author != "FuhrerBot" && enabled == 1){
