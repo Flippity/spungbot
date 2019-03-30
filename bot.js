@@ -483,7 +483,6 @@ function writeToUserTable(message, userid, serverid){
 
 //command that lets you toggle the bot
 function toggle(message, enabled){
-	var toggle;
 	server = message.guild.id;
 	if (message.content.includes("toggle") && message.isMentioned(client.user)) {
 		if(enabled == 1){
