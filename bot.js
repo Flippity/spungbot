@@ -78,7 +78,7 @@ client.on("message", async message => {
 				checkServerTable(message);
 				updateServerTable(message, result[0].xp);
 				
-				handleUserLevelSystem(message);
+				handleUserLevelSystem(message, enable);
 				
 				
 				//commands that everyone can use
@@ -385,13 +385,13 @@ function giveAuthorXP(message){
 }
 
 //handles both of the level systems
-function handleUserLevelSystem(message){
+function handleUserLevelSystem(message, enabled){
 	giveAuthorXP(message);
-	handleAuthorLevels(message);
+	handleAuthorLevels(message, enabled);
 }
 
 //handles levels
-function handleAuthorLevels(message){
+function handleAuthorLevels(message, enabled){
 	var userid = message.author.id;
 	var serverid = message.guild.id;
 	var xp;
