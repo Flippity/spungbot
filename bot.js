@@ -83,7 +83,7 @@ client.on("message", async message => {
 				
 				//commands that everyone can use
 				displayServerLevel(message, result[0].serverrank);
-				displayServerXP(message, result[0].xp);
+				displayServerXP(message, result[0].xp, enabled);
 				rank(message, enabled);
 				cat(message, enabled);
 				pizzatime(message, enabled);
@@ -685,7 +685,7 @@ function displayServerLevel(message, level, enabled){
 }
 
 //displays server xp
-function displayServerXP(message, xp){
+function displayServerXP(message, xp, enabled){
 	if(message.author.username != "FuhrerBot" && enabled == 1){
 		if (message.content.includes("serverxp") && message.isMentioned(client.user)) {
 			message.channel.send("The server's current xp level is " + xp + " xp");
