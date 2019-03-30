@@ -551,63 +551,63 @@ function displaycmds(message){
 			description: "This shows a list of all the commands",
 			fields: [
 			  {
-				name: "@FuhrerBot#9446 toggle",
+				name: "@SpungBot#1940 toggle",
 				value: "This toggles the whole bot"
 			  },
 			  {
-				name: "@FuhrerBot#9446 commands",
+				name: "@SpungBot#1940 commands",
 				value: "This displays a list of commands"
 			  },
 			  {
-				name: "@FuhrerBot#9446 serverlevel",
+				name: "@SpungBot#1940 serverlevel",
 				value: "This displays the server's current level"
 			  },
 			  {
-				name: "@FuhrerBot#9446 serverxp",
+				name: "@SpungBot#1940 serverxp",
 				value: "This displays the server's current xp count"
 			  },
 			  {
-				name: "@FuhrerBot#9446 rank",
+				name: "@SpungBot#1940 rank",
 				value: "This displays your current rank"
 			  },
 			  {
-				name: "@FuhrerBot#9446 cat",
+				name: "@SpungBot#1940 cat",
 				value: "This displays a random cat photo"
 			  },
 			  {
-				name: "@FuhrerBot#9446 nsfw",
+				name: "@SpungBot#1940 nsfw",
 				value: "This displays a random NSFW photo"
 			  },
 			  {
-				name: "@FuhrerBot#9446 hentai",
+				name: "@SpungBot#1940 hentai",
 				value: "This displays a random hentai photo"
 			  },
 			  {
-				name: "@FuhrerBot#9446 pizzatime",
+				name: "@SpungBot#1940 pizzatime",
 				value: "This displays pizza time"
 			  },
 			  {
-				name: "@FuhrerBot#9446 meme",
+				name: "@SpungBot#1940 meme",
 				value: "This displays a dank a$$ meme"
 			  },
 			  {
-				name: "@FuhrerBot#9446 play `video title OR youtube link`",
+				name: "@SpungBot#1940 play `video title OR youtube link`",
 				value: "This will make FuhrerBot join and play some epic noises"
 			  },
 			  {
-				name: "@FuhrerBot#9446 queue",
+				name: "@SpungBot#1940 queue",
 				value: "This displays the audio queue"
 			  },
 			  {
-				name: "@FuhrerBot#9446 leave",
+				name: "@SpungBot#1940 leave",
 				value: "This makes FuhrerBot leave the call"
 			  },
 			  {
-				name: "@FuhrerBot#9446 can we get an f",
+				name: "@SpungBot#1940 can we get an f",
 				value: "This is so sad"
 			  },
 			  {
-				name: "@FuhrerBot#9446 poll *insert text here*",
+				name: "@SpungBot#1940 poll *insert text here*",
 				value: "This will create a poll of whatever you'd like"
 			  }
 			],
