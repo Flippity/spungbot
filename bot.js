@@ -484,17 +484,17 @@ function writeToUserTable(message, userid, serverid){
 //command that lets you toggle the bot
 function toggle(message, enabled){
 	server = message.guild.id;
-	var toggle;
+	var enable;
 	if (message.content.includes("toggle") && message.isMentioned(client.user)) {
 		if(enabled == 1){
 			message.channel.send("disabled");
-			toggle = 0;
-			var sql = "UPDATE servers SET toggled = " + toggle + " WHERE serverid = " + server;
+			enable = 0;
+			var sql = "UPDATE servers SET toggled = " + enable + " WHERE serverid = " + server;
 			connection.query(sql, function (err, result) { if (err) throw err; });
 		}else{
 			message.channel.send("enabled");
-			toggle = 1;
-			var sql = "UPDATE servers SET toggled = " + toggle + " WHERE serverid = " + server;
+			enable = 1;
+			var sql = "UPDATE servers SET toggled = " + enable + " WHERE serverid = " + server;
 			connection.query(sql, function (err, result) { if (err) throw err; });
 		}
 	}
