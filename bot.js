@@ -65,7 +65,7 @@ client.on("message", async message => {
 		connection.query("SELECT * FROM servers WHERE serverid = '" + message.guild.id + "'", function (err, result, fields){
 			if(err) throw err;
 			if(result.length){
-				enable = result[0].toggled;
+				enable = result.toggled;
 				//commands only admins can use
 				if(message.member.hasPermission("ADMINISTRATOR")){
 					toggle(message, enable);
