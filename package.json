@@ -1,0 +1,22 @@
+{
+  "name": "spungbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "ffmpeg": "0.0.4",
+    "mysql": "^2.16.0",
+    "node-fetch": "^2.3.0",
+    "opusscript": "0.0.6",
+    "superagent": "^4.1.0",
+    "youtube-info": "^1.3.2",
+    "ytdl-core": "^0.29.1"
+  }
+}
