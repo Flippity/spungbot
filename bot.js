@@ -83,19 +83,19 @@ client.on("message", async message => {
 				
 				//commands that everyone can use
 				displayServerLevel(message, result[0].serverrank);
-				displayServerXP(message, result[0].xp, enabled);
-				rank(message, enabled);
-				cat(message, enabled);
-				pizzatime(message, enabled);
-				dankmeme(message, enabled);
-				PlayCommand(message, server, enabled);
-				PlayQueueCommand(message, server, enabled);
+				displayServerXP(message, result[0].xp, enable);
+				rank(message, enable);
+				cat(message, enable);
+				pizzatime(message, enable);
+				dankmeme(message, enable);
+				PlayCommand(message, server, enable);
+				PlayQueueCommand(message, server, enable);
 				SkipSong(message, server);
-				f(message, enabled);
+				f(message, enable);
 				LeaveChat(message, server);
 				getChannelFromUser(message);
-				nsfw(message, enabled);
-				hentai(message, enabled);
+				nsfw(message, enable);
+				hentai(message, enable);
 			}else{
 				checkServerTable(message);
 			}
