@@ -115,7 +115,7 @@ function getChannelFromUser(message){
 
 //plays audio based on results from youtube search
 function PlayCommand(message, server) {
-	if(message.isMentioned(client.user) && message.content.includes(" play") && message.author != "FuhrerBot"){
+	if(message.isMentioned(client.user) && message.content.includes(" play") && message.author != "FuhrerBot" && enabled == 1){
 		var x = message.content.lastIndexOf(' play ');
 		var result = message.content.substring(x + 6);
 		var defaultVoiceChannel = client.channels.find(val => val.type === 'voice').name;
@@ -254,7 +254,7 @@ function PlayStream(streamUrl, server, connection, message) {
 //this gets a cat from amazon's cat api and sends it to the channel
 async function cat(message){
 	try{
-		if(message.isMentioned(client.user) && message.content.includes(" cat") && message.author != "FuhrerBot"){
+		if(message.isMentioned(client.user) && message.content.includes(" cat") && message.author != "FuhrerBot" && enabled == 1){
 			const body = await fetch('https://www.reddit.com/r/catpictures.json?sort=top&t=week').then(response => response.json());
 			const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
 			
@@ -277,7 +277,7 @@ async function cat(message){
 //prints a meme from the /r/dankmeme subreddit
 async function dankmeme(message){
 	try{
-		if(message.isMentioned(client.user) && message.content.includes(" meme") && message.author != "FuhrerBot"){
+		if(message.isMentioned(client.user) && message.content.includes(" meme") && message.author != "FuhrerBot" && enabled == 1){
 			const body = await fetch('https://www.reddit.com/r/DankMemes.json?sort=top&t=week').then(response => response.json());
 			const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
 			
@@ -300,7 +300,7 @@ async function dankmeme(message){
 //prints some nsfw stuff
 async function nsfw(message){
 	try{
-		if(message.isMentioned(client.user) && message.content.includes(" nsfw") && message.author != "FuhrerBot"){
+		if(message.isMentioned(client.user) && message.content.includes(" nsfw") && message.author != "FuhrerBot" && enabled == 1){
 			const body = await fetch('https://www.reddit.com/r/nsfw.json?sort=top&t=week').then(response => response.json());
 			const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
 			
@@ -323,7 +323,7 @@ async function nsfw(message){
 //prints out hentai
 async function hentai(message){
 	try{
-		if(message.isMentioned(client.user) && message.content.includes(" hentai") && message.author != "FuhrerBot"){
+		if(message.isMentioned(client.user) && message.content.includes(" hentai") && message.author != "FuhrerBot" && enabled == 1){
 			const body = await fetch('https://www.reddit.com/r/hentai.json?sort=top&t=week').then(response => response.json());
 			const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
 			
@@ -346,7 +346,7 @@ async function hentai(message){
 //prints pizza time
 async function pizzatime(message){
 	try{
-		if(message.isMentioned(client.user) && message.content.includes(" pizzatime") && message.author != "FuhrerBot"){
+		if(message.isMentioned(client.user) && message.content.includes(" pizzatime") && message.author != "FuhrerBot" && enabled == 1){
 			const body = await fetch('https://www.reddit.com/r/PizzaTime.json?sort=top&t=week').then(response => response.json());
 			const allowed = message.channel.nsfw ? body.data.children : body.data.children.filter(post => !post.data.over_18);
 			
@@ -404,7 +404,9 @@ function handleAuthorLevels(message){
 				if(xp >= 600){
 					var level = (Number(result[0].level) + 1);
 					xp = 0;
-					message.channel.send("Wow " + message.author.username + " you are now level " + level);
+					if(enabled == 1){
+						message.channel.send("Wow " + message.author.username + " you are now level " + level);
+					}
 					var sql3 = "UPDATE users SET level = " + level + ", xp = " + xp + " WHERE userid = " + userid + " AND serverid = " + serverid;
 					connection.query(sql3, function (err3, result) { if (err3) throw err3; });
 				}
@@ -417,14 +419,14 @@ function handleAuthorLevels(message){
 
 //bot says "f" 
 function f(message){
-	if(message.isMentioned(client.user) && message.content.includes(" can we get an f") && message.author != "FuhrerBot"){
+	if(message.isMentioned(client.user) && message.content.includes(" can we get an f") && message.author != "FuhrerBot" && enabled == 1){
 		message.reply("f");
 	}
 }
 
 //displays user rank
 function rank(message){
-	if(message.isMentioned(client.user) && message.content.includes(" rank") && message.author != "FuhrerBot"){
+	if(message.isMentioned(client.user) && message.content.includes(" rank") && message.author != "FuhrerBot" && enabled == 1){
 		var userid = message.author.id;
 		var serverid = message.guild.id;
 		var sql = "SELECT * FROM users WHERE userid = '" + userid + "' AND serverid = '" + serverid + "'";
@@ -676,7 +678,7 @@ function updateServerTable(message, xp){
 
 //displays server level
 function displayServerLevel(message, level){
-	if(message.author.username != "FuhrerBot"){
+	if(message.author.username != "FuhrerBot" && enabled == 1){
 		if (message.content.includes("serverlevel") && message.isMentioned(client.user)) {
 			message.channel.send("The server's level is " + level);
 		}
@@ -685,7 +687,7 @@ function displayServerLevel(message, level){
 
 //displays server xp
 function displayServerXP(message, xp){
-	if(message.author.username != "FuhrerBot"){
+	if(message.author.username != "FuhrerBot" && enabled == 1){
 		if (message.content.includes("serverxp") && message.isMentioned(client.user)) {
 			message.channel.send("The server's current xp level is " + xp + " xp");
 		}
