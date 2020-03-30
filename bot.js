@@ -61,7 +61,7 @@ client.on("message", async message => {
         videourl: []
 	};
 	var server = servers[message.guild.id];
-	if(message.author.username != "FuhrerBot"){
+	if(message.author.username != "SpungBot"){
 		connection.query("SELECT * FROM servers WHERE serverid = '" + message.guild.id + "'", function (err, result, fields){
 			if(err) throw err;
 			if(result.length){
